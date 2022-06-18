@@ -3,11 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { CartProviderWrapper } from './contexts/CartContext';
+import { AuthProviderWrapper } from './contexts/AuthContext';
+import {BrowserRouter} from "react-router-dom";
+import { reducer, state } from './reducer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <BrowserRouter>
+    <AuthProviderWrapper>
+    <CartProviderWrapper reducer={reducer} state={state}>
     <App />
+    </CartProviderWrapper>
+    </AuthProviderWrapper>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
